@@ -1,0 +1,80 @@
+.spotlight {
+  padding: 4rem 2rem;
+  background-color: #f5f5f5;
+}
+
+.spotlight-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.spotlight-subheading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.spotlight-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.spotlight-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.spotlight-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .spotlight {
+    padding: 3rem 1rem;
+  }
+  
+  .spotlight-heading {
+    font-size: 2rem;
+  }
+  
+  .spotlight-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .spotlight-card {
+    height: 150px;
+  }
+  
+  .spotlight-content h3 {
+    font-size: 1.2rem;
+  }
+}
+
