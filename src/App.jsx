@@ -6,38 +6,54 @@ import Spotlight from './components/Spotlight'
 import PromoSection from './components/PromoSection'
 import Footer from './components/Footer'
 import ApparelSection from './components/ApparelSection'
+import WatchesSection from './components/WatchesSection'
+import ShoesSection from './components/ShoesSection'
 import './index.css'
 
 function App() {
-  const [showApparel, setShowApparel] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home') // home, apparel, watches, shoes
 
   const handleStartShopping = () => {
-    setShowApparel(true)
+    setCurrentPage('apparel')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleBackToHome = () => {
-    setShowApparel(false)
+    setCurrentPage('home')
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleNavigate = (page) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const renderContent = () => {
+    switch(currentPage) {
+      case 'apparel':
+        return <ApparelSection />
+      case 'watches':
+        return <WatchesSection />
+      case 'shoes':
+        return <ShoesSection />
+      case 'home':
+      default:
+        return (
+          <>
+            <Hero onStartShopping={handleStartShopping} />
+            <FeaturedProducts onNavigate={handleNavigate} />
+            <Spotlight />
+            <PromoSection />
+          </>
+        )
+    }
   }
 
   return (
     <div className="app">
       <Navbar onHomeClick={handleBackToHome} />
-      {showApparel ? (
-        <>
-          <ApparelSection />
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Hero onStartShopping={handleStartShopping} />
-          <FeaturedProducts />
-          <Spotlight />
-          <PromoSection />
-          <Footer />
-        </>
-      )}
+      {renderContent()}
+      <Footer />
     </div>
   )
 }

@@ -1,26 +1,34 @@
 import './FeaturedProducts.css'
 
-function FeaturedProducts() {
+function FeaturedProducts({ onNavigate }) {
   const products = [
     {
       id: 1,
       title: 'New Arrivals',
-      subtitle: 'Fresh styles for the season',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80'
+      subtitle: 'Premium watches collection',
+      image: 'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800&q=80',
+      page: 'watches'
     },
     {
       id: 2,
       title: 'Best Sellers',
-      subtitle: 'Customer favorites',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80'
+      subtitle: 'Top rated footwear',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
+      page: 'shoes'
     },
     {
       id: 3,
       title: 'Limited Edition',
       subtitle: 'Exclusive drops',
-      image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80',
+      page: 'shoes'
     }
   ]
+
+  const handleNavigate = (page) => {
+    onNavigate(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <section className="featured-products">
@@ -31,7 +39,12 @@ function FeaturedProducts() {
               <div className="featured-overlay">
                 <h3 className="featured-title">{product.title}</h3>
                 <p className="featured-subtitle">{product.subtitle}</p>
-                <button className="featured-button">Shop Now</button>
+                <button 
+                  className="featured-button"
+                  onClick={() => handleNavigate(product.page)}
+                >
+                  Shop Now
+                </button>
               </div>
             </div>
           </div>
