@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import FeaturedProducts from './components/FeaturedProducts'
@@ -12,6 +12,7 @@ import './index.css'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home') // home, apparel, watches, shoes
+  const featuredProductsRef = useRef(null)
 
   const handleStartShopping = () => {
     setCurrentPage('apparel')
@@ -21,6 +22,20 @@ function App() {
   const handleBackToHome = () => {
     setCurrentPage('home')
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleProductsClick = () => {
+    if (currentPage !== 'home') {
+      // If not on home page, navigate to home first
+      setCurrentPage('home')
+      // Wait for the page to render, then scroll
+      setTimeout(() => {
+        featuredProductsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    } else {
+      // If already on home page, just scroll
+      featuredProductsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   const handleNavigate = (page) => {
@@ -41,7 +56,9 @@ function App() {
         return (
           <>
             <Hero onStartShopping={handleStartShopping} />
-            <FeaturedProducts onNavigate={handleNavigate} />
+            <div ref={featuredProductsRef}>
+              <FeaturedProducts onNavigate={handleNavigate} />
+            </div>
             <Spotlight />
             <PromoSection />
           </>
@@ -51,7 +68,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar onHomeClick={handleBackToHome} />
+      <Navbar onHomeClick={handleBackToHome} onProductsClick={handleProductsClick} />
       {renderContent()}
       <Footer />
     </div>

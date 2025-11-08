@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-function Navbar({ onHomeClick }) {
+function Navbar({ onHomeClick, onProductsClick }) {
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -9,7 +9,7 @@ function Navbar({ onHomeClick }) {
       
       <div className="navbar-center">
         <button className="nav-link" onClick={onHomeClick}>Home</button>
-        <button className="nav-link">Products</button>
+        <button className="nav-link" onClick={onProductsClick}>Products</button>
       </div>
       
       <div className="navbar-right">
