@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 import './WatchesSection.css'
 
 function WatchesSection() {
   const [selectedFilter, setSelectedFilter] = useState(null)
+  const { addToCart } = useCart()
 
   const categories = [
     {
@@ -36,73 +38,73 @@ function WatchesSection() {
 
   const products = [
     {
-      id: 1,
+      id: 'watch-1',
       name: 'Classic Steel Watch',
       price: 299.99,
       image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80'
     },
     {
-      id: 2,
+      id: 'watch-2',
       name: 'Smart Fitness Watch',
       price: 399.99,
       image: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&q=80'
     },
     {
-      id: 3,
+      id: 'watch-3',
       name: 'Luxury Gold Edition',
       price: 1299.99,
       image: 'https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600&q=80'
     },
     {
-      id: 4,
+      id: 'watch-4',
       name: 'Sport Chronograph',
       price: 549.99,
       image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80'
     },
     {
-      id: 5,
+      id: 'watch-5',
       name: 'Minimalist Black',
       price: 249.99,
       image: 'https://images.unsplash.com/photo-1434493907317-a46b5bbe7834?w=600&q=80'
     },
     {
-      id: 6,
+      id: 'watch-6',
       name: 'Rose Gold Classic',
       price: 899.99,
       image: 'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=80'
     },
     {
-      id: 7,
+      id: 'watch-7',
       name: 'Digital Smart Watch',
       price: 449.99,
       image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&q=80'
     },
     {
-      id: 8,
+      id: 'watch-8',
       name: 'Skeleton Mechanical',
       price: 799.99,
       image: 'https://images.unsplash.com/photo-1606404993639-03e36b5c7c8b?w=600&q=80'
     },
     {
-      id: 9,
+      id: 'watch-9',
       name: 'Leather Strap Watch',
       price: 349.99,
       image: 'https://images.unsplash.com/photo-1611057916377-eb35f146d569?w=600&q=80'
     },
     {
-      id: 10,
+      id: 'watch-10',
       name: 'Titanium Sport',
       price: 649.99,
       image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=600&q=80'
     },
     {
-      id: 11,
+      id: 'watch-11',
       name: 'Vintage Leather',
       price: 429.99,
       image: 'https://images.unsplash.com/photo-1585123334904-845d60e97b29?w=600&q=80'
     },
     {
-      id: 12,
+      id: 'watch-12',
       name: 'Modern Automatic',
       price: 999.99,
       image: 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=600&q=80'
@@ -180,6 +182,12 @@ function WatchesSection() {
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">${product.price}</p>
+              <button 
+                className="add-to-cart-btn"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}

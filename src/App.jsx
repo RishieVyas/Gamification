@@ -8,10 +8,11 @@ import Footer from './components/Footer'
 import ApparelSection from './components/ApparelSection'
 import WatchesSection from './components/WatchesSection'
 import ShoesSection from './components/ShoesSection'
+import CartPage from './components/CartPage'
 import './index.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home') // home, apparel, watches, shoes
+  const [currentPage, setCurrentPage] = useState('home') // home, apparel, watches, shoes, cart
   const featuredProductsRef = useRef(null)
 
   const handleStartShopping = () => {
@@ -43,6 +44,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const handleCartClick = () => {
+    setCurrentPage('cart')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const renderContent = () => {
     switch(currentPage) {
       case 'apparel':
@@ -51,6 +57,8 @@ function App() {
         return <WatchesSection />
       case 'shoes':
         return <ShoesSection />
+      case 'cart':
+        return <CartPage />
       case 'home':
       default:
         return (
@@ -68,7 +76,11 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar onHomeClick={handleBackToHome} onProductsClick={handleProductsClick} />
+      <Navbar 
+        onHomeClick={handleBackToHome} 
+        onProductsClick={handleProductsClick}
+        onCartClick={handleCartClick}
+      />
       {renderContent()}
       <Footer />
     </div>

@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 import './ApparelSection.css'
 
 function ApparelSection() {
   const [selectedFilter, setSelectedFilter] = useState(null)
+  const { addToCart } = useCart()
 
   const categories = [
     {
@@ -36,49 +38,49 @@ function ApparelSection() {
 
   const products = [
     {
-      id: 1,
+      id: 'apparel-1',
       name: 'Premium Cotton T-Shirt',
       price: 49.99,
       image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80'
     },
     {
-      id: 2,
+      id: 'apparel-2',
       name: 'Slim Fit Jeans',
       price: 89.99,
       image: 'https://images.unsplash.com/photo-1542272454315-7ad9e2592b7e?w=400&q=80'
     },
     {
-      id: 3,
+      id: 'apparel-3',
       name: 'Leather Jacket',
       price: 299.99,
       image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'
     },
     {
-      id: 4,
+      id: 'apparel-4',
       name: 'Casual Sneakers',
       price: 129.99,
       image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&q=80'
     },
     {
-      id: 5,
+      id: 'apparel-5',
       name: 'Wool Sweater',
       price: 79.99,
       image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80'
     },
     {
-      id: 6,
+      id: 'apparel-6',
       name: 'Chino Pants',
       price: 69.99,
       image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&q=80'
     },
     {
-      id: 7,
+      id: 'apparel-7',
       name: 'Denim Jacket',
       price: 119.99,
       image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400&q=80'
     },
     {
-      id: 8,
+      id: 'apparel-8',
       name: 'Running Shoes',
       price: 149.99,
       image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'
@@ -155,6 +157,12 @@ function ApparelSection() {
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">${product.price}</p>
+              <button 
+                className="add-to-cart-btn"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}

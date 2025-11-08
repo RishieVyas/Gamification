@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useCart } from '../context/CartContext'
 import './ShoesSection.css'
 
 function ShoesSection() {
   const [selectedFilter, setSelectedFilter] = useState(null)
+  const { addToCart } = useCart()
 
   const categories = [
     {
@@ -36,73 +38,73 @@ function ShoesSection() {
 
   const products = [
     {
-      id: 1,
+      id: 'shoe-1',
       name: 'Air Max Premium',
       price: 189.99,
       image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80'
     },
     {
-      id: 2,
+      id: 'shoe-2',
       name: 'Classic White Sneakers',
       price: 129.99,
       image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80'
     },
     {
-      id: 3,
+      id: 'shoe-3',
       name: 'Basketball Pro Elite',
       price: 249.99,
       image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=80'
     },
     {
-      id: 4,
+      id: 'shoe-4',
       name: 'Running Boost X',
       price: 179.99,
       image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&q=80'
     },
     {
-      id: 5,
+      id: 'shoe-5',
       name: 'Limited Edition Retro',
       price: 299.99,
       image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80'
     },
     {
-      id: 6,
+      id: 'shoe-6',
       name: 'Urban Street Style',
       price: 159.99,
       image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80'
     },
     {
-      id: 7,
+      id: 'shoe-7',
       name: 'Red Sport Runner',
       price: 169.99,
       image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=600&q=80'
     },
     {
-      id: 8,
+      id: 'shoe-8',
       name: 'Black Leather High-Top',
       price: 219.99,
       image: 'https://images.unsplash.com/photo-1520256862855-398228c41684?w=600&q=80'
     },
     {
-      id: 9,
+      id: 'shoe-9',
       name: 'Casual Canvas Shoes',
       price: 89.99,
       image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80'
     },
     {
-      id: 10,
+      id: 'shoe-10',
       name: 'Performance Training',
       price: 149.99,
       image: 'https://images.unsplash.com/photo-1603787081207-362bcef7f620?w=600&q=80'
     },
     {
-      id: 11,
+      id: 'shoe-11',
       name: 'Vintage Collection',
       price: 139.99,
       image: 'https://images.unsplash.com/photo-1562183241-b937e95585b6?w=600&q=80'
     },
     {
-      id: 12,
+      id: 'shoe-12',
       name: 'Premium Leather',
       price: 279.99,
       image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=600&q=80'
@@ -180,6 +182,12 @@ function ShoesSection() {
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">${product.price}</p>
+              <button 
+                className="add-to-cart-btn"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}
