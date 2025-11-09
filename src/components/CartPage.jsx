@@ -1,12 +1,33 @@
+import { useState } from 'react'
 import { useCart } from '../context/CartContext'
+import OrderConfirmationModal from './OrderConfirmationModal'
 import './CartPage.css'
 
 function CartPage() {
-  const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart()
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [paymentMethod, setPaymentMethod] = useState('')
 
   const subtotal = getCartTotal()
   const shipping = subtotal > 0 ? 9.95 : 0
   const estimatedTotal = subtotal + shipping
+
+  const handleCheckoutClick = (method) => {
+    setPaymentMethod(method)
+    setIsModalOpen(true)
+  }
+
+  const handleConfirmOrder = () => {
+    setIsModalOpen(false)
+    // Simulate order confirmation
+    alert(`Order confirmed! Payment method: ${paymentMethod === 'paypal' ? 'PayPal' : 'Credit Card'}`)
+    clearCart()
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setPaymentMethod('')
+  }
 
   if (cartItems.length === 0) {
     return (
@@ -99,16 +120,31 @@ function CartPage() {
               <strong>Klarna</strong> and <strong>Afterpay</strong> available for orders $35 - $1000.
             </p>
             
-            <button className="checkout-btn">Start Checkout</button>
+            <button 
+              className="checkout-btn"
+              onClick={() => handleCheckoutClick('checkout')}
+            >
+              Start Checkout
+            </button>
             
             <p className="checkout-alt">or check out with</p>
             
-            <button className="paypal-btn">
+            <button 
+              className="paypal-btn"
+              onClick={() => handleCheckoutClick('paypal')}
+            >
               <span className="paypal-logo">PayPal</span>
             </button>
           </div>
         </div>
       </div>
+
+      <OrderConfirmationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmOrder}
+        paymentMethod={paymentMethod}
+      />
     </section>
   )
 }
