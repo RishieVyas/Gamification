@@ -1,0 +1,223 @@
+.thankyou-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.thankyou-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.thankyou-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  animation: scaleIn 0.5s ease-out 0.2s backwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.success-icon svg {
+  filter: drop-shadow(0 4px 12px rgba(74, 222, 128, 0.3));
+}
+
+.thankyou-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thankyou-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.order-summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.summary-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.summary-details {
+  margin-bottom: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.summary-row span:last-child {
+  font-weight: 500;
+  color: #000;
+}
+
+.discount-row {
+  color: #22c55e;
+}
+
+.discount-label {
+  color: #22c55e !important;
+  font-weight: 600;
+}
+
+.discount-amount {
+  color: #22c55e !important;
+  font-weight: 700;
+}
+
+.summary-divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin: 1.5rem 0;
+}
+
+.total-row {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.final-amount {
+  font-size: 1.5rem;
+  color: #6366f1 !important;
+}
+
+.savings-badge {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.badge-icon {
+  font-size: 1.5rem;
+}
+
+.thankyou-message {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease-out 0.4s backwards;
+}
+
+.message-text {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.thankyou-actions {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease-out 0.5s backwards;
+}
+
+.btn-primary {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.thankyou-footer {
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out 0.6s backwards;
+}
+
+.thankyou-footer p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .thankyou-page {
+    padding: 1rem;
+  }
+
+  .thankyou-title {
+    font-size: 2rem;
+  }
+
+  .thankyou-subtitle {
+    font-size: 1rem;
+  }
+
+  .order-summary-card {
+    padding: 1.5rem;
+  }
+
+  .summary-title {
+    font-size: 1.25rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+

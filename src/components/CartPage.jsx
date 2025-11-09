@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
 import OrderConfirmationModal from './OrderConfirmationModal'
+import GiftBoxGame from './GiftBoxGame'
+import ThankYouPage from './ThankYouPage'
 import './CartPage.css'
 
 function CartPage() {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState('')
+  const [showGame, setShowGame] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
+  const [orderDetails, setOrderDetails] = useState(null)
 
   const subtotal = getCartTotal()
   const shipping = subtotal > 0 ? 9.95 : 0
@@ -19,14 +24,43 @@ function CartPage() {
 
   const handleConfirmOrder = () => {
     setIsModalOpen(false)
-    // Simulate order confirmation
-    alert(`Order confirmed! Payment method: ${paymentMethod === 'paypal' ? 'PayPal' : 'Credit Card'}`)
+    setShowGame(true)
+  }
+
+  const handleGameComplete = (discount) => {
+    setShowGame(false)
+    
+    // Calculate final amounts with discount
+    const discountAmount = (subtotal * discount) / 100
+    const finalTotal = subtotal + shipping - discountAmount
+
+    const details = {
+      subtotal,
+      shipping,
+      discount,
+      discountAmount,
+      finalTotal,
+      paymentMethod
+    }
+
+    setOrderDetails(details)
+    setShowThankYou(true)
     clearCart()
   }
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
     setPaymentMethod('')
+  }
+
+  // Show Thank You page
+  if (showThankYou && orderDetails) {
+    return <ThankYouPage orderDetails={orderDetails} />
+  }
+
+  // Show Gift Box Game
+  if (showGame) {
+    return <GiftBoxGame onGameComplete={handleGameComplete} orderTotal={estimatedTotal} />
   }
 
   if (cartItems.length === 0) {

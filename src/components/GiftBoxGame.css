@@ -1,0 +1,204 @@
+.gift-game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.gift-game-container {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+.gift-game-header {
+  margin-bottom: 3rem;
+}
+
+.gift-game-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.gift-game-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.gift-boxes-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.gift-box {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.gift-box.selected {
+  animation: boxOpen 0.6s ease-out forwards;
+  cursor: default;
+}
+
+.gift-box.unselected {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes boxOpen {
+  0% {
+    transform: scale(1) rotateY(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotateY(10deg);
+  }
+  100% {
+    transform: scale(1.15) rotateY(0deg);
+  }
+}
+
+.gift-box-visual {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-svg {
+  width: 180px;
+  height: 200px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.gift-reveal {
+  animation: revealPop 0.5s ease-out;
+}
+
+@keyframes revealPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.discount-circle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.discount-percentage {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.no-discount-icon {
+  font-size: 4rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.discount-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.discount-subtext {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  opacity: 0.95;
+}
+
+.gift-game-instruction {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .gift-boxes-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .gift-game-title {
+    font-size: 2rem;
+  }
+
+  .gift-game-subtitle {
+    font-size: 1rem;
+  }
+
+  .gift-box {
+    min-height: 280px;
+  }
+
+  .gift-svg {
+    width: 140px;
+    height: 160px;
+  }
+
+  .discount-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .discount-percentage {
+    font-size: 3rem;
+  }
+}
+
