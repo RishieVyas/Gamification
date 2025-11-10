@@ -79,18 +79,18 @@ function WatchesSection() {
       price: 449.99,
       image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&q=80'
     },
-    {
-      id: 'watch-8',
-      name: 'Skeleton Mechanical',
-      price: 799.99,
-      image: 'https://images.unsplash.com/photo-1606404993639-03e36b5c7c8b?w=600&q=80'
-    },
-    {
-      id: 'watch-9',
-      name: 'Leather Strap Watch',
-      price: 349.99,
-      image: 'https://images.unsplash.com/photo-1611057916377-eb35f146d569?w=600&q=80'
-    },
+    // {
+    //   id: 'watch-8',
+    //   name: 'Skeleton Mechanical',
+    //   price: 799.99,
+    //   image: 'https://images.unsplash.com/photo-1606404993639-03e36b5c7c8b?w=600&q=80'
+    // },
+    // {
+    //   id: 'watch-9',
+    //   name: 'Leather Strap Watch',
+    //   price: 349.99,
+    //   image: 'https://images.unsplash.com/photo-1611057916377-eb35f146d569?w=600&q=80'
+    // },
     {
       id: 'watch-10',
       name: 'Titanium Sport',

@@ -21,8 +21,8 @@ function ThankYouPage({ orderDetails }) {
   const handleSubmitFeedback = async (e) => {
     e.preventDefault()
     
-    // Replace this URL with your Google Apps Script Web App URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_aIyjRei-WrjVgo4YFAKytZtUQ2ze7Q6jz0mWsa9iBRAIWXBtBhVtiMjQeqagNh9KrQ/exec'
+    // Get Google Script URL from environment variable
+    const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
     
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {

@@ -24,7 +24,27 @@ function CartPage() {
 
   const handleConfirmOrder = () => {
     setIsModalOpen(false)
-    setShowGame(true)
+    
+    // Check if game feature is enabled
+    const isGameEnabled = import.meta.env.VITE_ENABLE_GAME === 'true'
+    
+    if (isGameEnabled) {
+      // Show gift box game
+      setShowGame(true)
+    } else {
+      // Skip game, go directly to thank you page with no discount
+      const details = {
+        subtotal,
+        shipping,
+        discount: 0,
+        discountAmount: 0,
+        finalTotal: subtotal + shipping,
+        paymentMethod
+      }
+      setOrderDetails(details)
+      setShowThankYou(true)
+      clearCart()
+    }
   }
 
   const handleGameComplete = (discount) => {

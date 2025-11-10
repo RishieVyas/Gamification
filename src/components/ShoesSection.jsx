@@ -91,12 +91,12 @@ function ShoesSection() {
       price: 89.99,
       image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80'
     },
-    {
-      id: 'shoe-10',
-      name: 'Performance Training',
-      price: 149.99,
-      image: 'https://images.unsplash.com/photo-1603787081207-362bcef7f620?w=600&q=80'
-    },
+    // {
+    //   id: 'shoe-10',
+    //   name: 'Performance Training',
+    //   price: 149.99,
+    //   image: 'https://images.unsplash.com/photo-1603787081207-362bcef7f620?w=600&q=80'
+    // },
     {
       id: 'shoe-11',
       name: 'Vintage Collection',

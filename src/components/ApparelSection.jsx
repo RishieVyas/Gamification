@@ -43,12 +43,12 @@ function ApparelSection() {
       price: 49.99,
       image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80'
     },
-    {
-      id: 'apparel-2',
-      name: 'Slim Fit Jeans',
-      price: 89.99,
-      image: 'https://images.unsplash.com/photo-1542272454315-7ad9e2592b7e?w=400&q=80'
-    },
+    // {
+    //   id: 'apparel-2',
+    //   name: 'Slim Fit Jeans',
+    //   price: 89.99,
+    //   image: 'https://images.unsplash.com/photo-1542272454315-7ad9e2592b7e?w=400&q=80'
+    // },
     {
       id: 'apparel-3',
       name: 'Leather Jacket',
