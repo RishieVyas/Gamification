@@ -24,6 +24,10 @@ function ThankYouPage({ orderDetails }) {
     // Get Google Script URL from environment variable
     const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
     
+    const isGameEnabled = import.meta.env.VITE_ENABLE_GAME === 'true'
+    
+    const version = isGameEnabled ? 'With Game' : 'Without Game'
+    
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
@@ -34,7 +38,8 @@ function ThankYouPage({ orderDetails }) {
         body: JSON.stringify({
           name: feedbackData.name,
           email: feedbackData.email,
-          experience: feedbackData.experience
+          experience: feedbackData.experience,
+          version: version
         })
       })
       
