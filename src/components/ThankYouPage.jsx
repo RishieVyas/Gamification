@@ -6,7 +6,8 @@ function ThankYouPage({ orderDetails }) {
   const [feedbackData, setFeedbackData] = useState({
     name: '',
     email: '',
-    experience: ''
+    checkoutExperience: '',
+    wouldReturn: ''
   })
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false)
 
@@ -38,7 +39,8 @@ function ThankYouPage({ orderDetails }) {
         body: JSON.stringify({
           name: feedbackData.name,
           email: feedbackData.email,
-          experience: feedbackData.experience,
+          checkoutExperience: feedbackData.checkoutExperience,
+          wouldReturn: feedbackData.wouldReturn,
           version: version
         })
       })
@@ -142,19 +144,32 @@ function ThankYouPage({ orderDetails }) {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="experience">Your Experience</label>
-                  <p className="form-help-text">
-                    How was your shopping experience? Did you enjoy the gift box game?
-                  </p>
+                  <label htmlFor="checkoutExperience">How was your checkout experience?</label>
                   <textarea
-                    id="experience"
-                    name="experience"
-                    value={feedbackData.experience}
+                    id="checkoutExperience"
+                    name="checkoutExperience"
+                    value={feedbackData.checkoutExperience}
                     onChange={handleInputChange}
-                    placeholder="Share your thoughts about the shopping experience and the gift box game..."
-                    rows="5"
+                    placeholder="Share your thoughts about the checkout process..."
+                    rows="3"
                     required
                   />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="wouldReturn">Would you return to this website?</label>
+                  <select
+                    id="wouldReturn"
+                    name="wouldReturn"
+                    value={feedbackData.wouldReturn}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="">Select an option</option>
+                    <option value="Definitely">Definitely</option>
+                    <option value="Maybe">Maybe</option>
+                    <option value="No">No</option>
+                  </select>
                 </div>
 
                 <button type="submit" className="feedback-submit-btn">
